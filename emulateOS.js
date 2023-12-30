@@ -80,10 +80,11 @@ const changeBack = (event) => {
 // 打开网址
 const openBrowser = (event) => {
   let e = event || window.event
-  alert(1)
+  
   let urlInput = document.getElementById('urlInput')
   if (e.keyCode == 13 || e.button == 0) {
     let i = document.getElementById('iframe')
+    alert("sucess")
     i.setAttribute('src', urlInput.value)
   }
   e.stopPropagation()
