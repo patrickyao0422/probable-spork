@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模拟操作系统</title>
+</head>
+<body>
+  <div class="container" onmouseup="desktopEve()" ondragover="dragover()" ondrop="drop()">
+    <!-- 隐藏文件夹 -->
+    <div class="icon" draggable="true" style="display: none;">
+      <img src="desktop/filefolder.png" onmouseup="fileIconEve()" ondblclick="openFileFolder()" ondragstart="dragStart()">
+      <input type="text" value="新建文件夹">
+      <!-- 文件夹右键菜单 -->
+      <ul class="fileMenu" style="display: none;">
+        <li onclick="openFileFolder()">打开</li>
+        <li onclick="copyFileFolder()">复制</li>
+        <li onclick="delFileFolder()">删除</li>
+        <li onclick="renameFileFolder()">重命名</li>
+      </ul>
+    </div>
+    <div class="container filefolder" style="display: none" onmouseup="filefolderEve()" ondragover="dragover()" ondrop="drop()">
+      <img class="close" src="desktop/close.svg" onclick="parentNode.style.display='none'">
+      <ul class="fileFolderMenu" style="display: none;">
+        <li onclick="newFileFolder()">新建文件夹</li>
+      </ul>
+    </div>
+    <!-- 文件夹 -->
+    <div class="icon" draggable="true">
+      <img src="desktop/filefolder.png" onmouseup="fileIconEve()" ondblclick="openFileFolder()" ondragstart="dragStart()">
+      <input type="text" value="新建文件夹">
+      <ul class="fileMenu" style="display: none;">
+        <li onclick="openFileFolder()">打开</li>
+        <li onclick="copyFileFolder()">复制</li>
+        <li onclick="delFileFolder()">删除</li>
+        <li onclick="renameFileFolder()">重命名</li>
+      </ul>
+    </div>
+    <div class="container filefolder" style="display: none" onmouseup="filefolderEve()" ondragover="dragover()" ondrop="drop()">
+      <img class="close" src="desktop/close.svg" onclick="parentNode.style.display='none'">
+      <ul class="fileFolderMenu" style="display: none;">
+        <li onclick="newFileFolder()">新建文件夹</li>
+      </ul>
+    </div>
+    <!-- 浏览器 -->
+    <div class="icon" draggable="true">
+      <img src="desktop/browser.svg" onclick="parentNode.classList.add('active')" ondblclick="getElementById('browser').style.display='block'" ondragstart="dragStart()">
+      <input type="text" value="浏览器">
+    </div>
+    <div id="browser" class="filefolder" style="display: none;">
+      <input id="urlInput" style="width: 880px; height: 20px;" onkeydown="openBrowser()">
+      <button onclick="openBrowser()">前往</button>
+      <img class="close" src="Desktop/close.svg" onclick="parentNode.style.display='none'">
+      <iframe id="iframe"></iframe>
+    </div>
+    <!-- 回收箱 -->
+    <div class="icon" draggable="true">
+      <img src="desktop/trashBin.svg" onclick="parentNode.classList.add('active')" ondblclick="getElementById('trash').style.display='block'" ondragstart="dragStart()">
+      <input type="text" value="回收箱">
+    </div>
+    <div id="trash" class="filefolder " style="display: none">
+      <img class="close" src="desktop/close.svg" onclick="parentNode.style.display='none'">
+    </div>
+    <!-- 桌面右键菜单 -->
+    <ul class="desktopMenu" style="display: none;">
+      <li onclick="newFileFolder()">新建文件夹</li>
+      <li onclick="changeBack()">更改桌面背景</li>
+      <li onclick="pasteFileFolder()">粘贴</li>
+      <li>排序方式</li>
+      <li onclick="location.reload()">刷新</li>
+    </ul>
+  </div>
+</body>
+<script src="./emulateOS.js"></script>
+<link rel="stylesheet" type="text/css" href="emulateOS.css" />
+</html>
